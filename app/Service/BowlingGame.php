@@ -3,11 +3,20 @@ namespace App\Service;
 
 class BowlingGame
 {
-    public $score = 0;
+    public $score;
 
-
-    public function record_shot()
+    /**
+     * BowlingGame constructor.
+     * @param int $score
+     */
+    public function __construct()
     {
+        $this->score = 0;
+    }
 
+
+    public function record_shot($pins)
+    {
+        $this->score += $pins;
     }
 }
