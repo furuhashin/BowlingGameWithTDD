@@ -34,7 +34,12 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: composer install -n --prefer-dist
+      - run:
+        command: |
+                            cp .env.example .env && \
+                            composer install --no-interaction && \
+                            php artisan key:generate && \
+                            ./artisan migrate:refresh && \
 
       - save_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
