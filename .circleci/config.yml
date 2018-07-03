@@ -36,10 +36,10 @@ jobs:
 
       - run:
         command: |
-                            cp .env.example .env && \
-                            composer install --no-interaction && \
-                            php artisan key:generate && \
-                            ./artisan migrate:refresh && \
+          cp .env.example .env && \
+          composer install --no-interaction && \
+          php artisan key:generate && \
+          ./artisan migrate:refresh && \
 
       - save_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
